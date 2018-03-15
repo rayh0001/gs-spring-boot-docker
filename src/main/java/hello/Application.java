@@ -43,12 +43,7 @@ public class Application {
 		System.out.println("File Name is: " + file.getOriginalFilename());
 		System.out.println("File Name is: " + (file.getSize()/1024) + "KB or around" + (file.getSize()/1048576) + "MB");
 
-
-		if (status) {
-			return "success";
-		} else {
-			return "failure";
-		}
+		return "success";
 	}
 	
     @RequestMapping("/")
