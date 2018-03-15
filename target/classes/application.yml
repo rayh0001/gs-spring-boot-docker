@@ -1,3 +1,7 @@
+spring.http.multipart:
+  max-file-size:  52428800
+  max-request-size: 52428800
+
 server:
   port: 8080
 
