@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.bluemix.net/client-max-body-size: 200m
+    ingress.bluemix.net/large-client-header-buffers: number=4 size=50m
+    ingress.bluemix.net/proxy-buffer-size: size=50m
+    ingress.bluemix.net/proxy-buffers: number=4 size=50m
+    ingress.bluemix.net/proxy-connect-timeout: 75s
+    ingress.bluemix.net/proxy-read-timeout: 90s
+    ingress.bluemix.net/upstream-keepalive: serviceName=istio-ingress keepalive=0
+  name: istio-fd
+  namespace: istio-system
+spec:
+  rules:
+  - host: aaavx.aaav-dev-01-cluster.us-south.containers.mybluemix.net
+    http:
+      paths:
+      - backend:
+          serviceName: istio-ingress
+          servicePort: 80
+        path: /
+  tls:
+  - hosts:
+    - aaavx.aaav-dev-01-cluster.us-south.containers.mybluemix.net
+    secretName: aaav-dev-01-cluster
